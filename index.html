@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fiat Checkout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="checkout-container">
+    
+    <div class="header-section">
+      <span class="back-btn">‹</span>
+      <h2 class="header-title">Secure Checkout</h2>
+      <span style="width: 24px;"></span> 
+    </div>
+
+    <div class="content-body">
+      <div class="item-card">
+        <div class="item-img">
+          <img src="https://img.icons8.com/fluency/96/headphones.png" alt="Headphones">
+        </div>
+        <div class="item-details">
+          <p class="label">ITEM SUMMARY</p>
+          <p class="item-name">Premium Wireless Headphones</p>
+          <p class="item-price">₹14,900</p>
+        </div>
+      </div>
+
+      <form id="checkout-form" autocomplete="off">
+        <div class="section-title">
+          <span>Card Payment</span>
+            <div class="card-icons">💳</div>
+        </div>
+
+        <div class="form-group">
+          <label>Cardholder Name</label>
+          <input type="text" id="name" placeholder="Enter name on card" autocomplete="off">
+          <small class="error-msg"></small> </div>
+
+        <div class="form-group">
+          <label>Card Number</label>
+          <div class="input-wrapper">
+            <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" inputmode="numeric" autocomplete="off">
+            <span class="input-icon">📶</span> 
+          </div>
+          <small class="error-msg"></small> </div>
+
+        <div class="row">
+          <div class="form-group half">
+            <label>Expiry Date</label>
+            <input type="text" 
+            id="expiry" 
+            placeholder="MM/YY" 
+            maxlength="5"
+            autocomplete="off"
+            readonly
+            onfocus="this.removeAttribute('readonly');">
+            <small class="error-msg"></small> </div>
+          <div class="form-group half">
+            <label>CVV</label>
+            <div class="input-wrapper">
+              <input type="password" 
+              id="cvv" 
+              placeholder="123" 
+              maxlength="3"
+              autocomplete="off"
+              readonly
+              onfocus="this.removeAttribute('readonly');">
+              <span class="input-icon">ⓘ</span> 
+            </div>
+            <small class="error-msg"></small> </div>
+        </div>
+
+        <div class="security-box">
+          <p class="security-info">🔒 YOUR PAYMENT IS SECURED WITH 256-BIT ENCRYPTION</p>
+        </div>
+        
+        <a href="#" class="other-methods">Other Payment Methods›</a>
+
+        <p class="terms">
+          By tapping Pay Now, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+        </p>
+
+        <button type="submit" id="pay-btn">
+          <span class="btn-text">Pay Now · ₹14,900</span>
+          <span class="loader" style="display: none;"></span>
+        </button>
+      </form>
+    </div> 
+  </div> 
+  <script src="script.js"></script>
+</body>
+
+</html>

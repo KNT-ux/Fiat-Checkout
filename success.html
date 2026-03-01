@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --success-green: #10b981;
+            /* Beautiful light palette */
+            --bg-color: #f8fafc;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+        }
+
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0;
+            /* Modern Mesh Gradient Background */
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(225,39%,30%,0.1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,20%,0.05) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(225,39%,30%,0.1) 0, transparent 50%);
+        }
+
+        .success-card { 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 40px; 
+            border-radius: 32px; 
+            text-align: center; 
+            width: 380px; 
+            /* Soft, deep shadow for a 'floating' effect */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            animation: cardEntrance 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .icon-circle {
+            width: 90px;
+            height: 90px;
+            background: #f0fdf4;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 28px;
+            border: 4px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+        }
+
+        .checkmark {
+            color: var(--success-green);
+            font-size: 44px;
+            font-weight: bold;
+            display: inline-block;
+            animation: checkPop 0.4s 0.6s both cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        h1 { 
+            font-size: 26px; 
+            margin: 0 0 12px; 
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .confetti-text { 
+            color: var(--text-muted); 
+            font-size: 15px; 
+            line-height: 1.6;
+            margin-bottom: 32px;
+            padding: 0 10px;
+        }
+
+        /* Subtle Receipt Details */
+        .details-grid {
+            border-top: 1px solid #f1f5f9;
+            padding-top: 24px;
+            margin-bottom: 32px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            text-align: left;
+        }
+
+        .detail-item label {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #94a3b8;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .detail-item span {
+            font-size: 14px;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .btn-home { 
+            display: block;
+            background: var(--primary-blue);
+            color: white; 
+            text-decoration: none; 
+            font-weight: 700; 
+            padding: 18px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .btn-home:hover {
+            background: #1d4ed8;
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+        }
+
+        @keyframes checkPop 
+        {
+            0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-card">
+        <div class="icon-circle">
+            <span class="checkmark">✓</span>
+        </div>
+        
+        <h1>Payment Successful</h1>
+        <p class="confetti-text">Hooray! Your order is confirmed. We've sent the details to your email address.</p>
+        
+        <div class="details-grid">
+            <div class="detail-item">
+                <label>Amount</label>
+                <span>₹14,900.00</span>
+            </div>
+            <div class="detail-item">
+                <label>Method</label>
+                <span>Credit Card</span>
+            </div>
+            <div class="detail-item">
+                <label>Order No.</label>
+                <span id="order-id"></span>
+            </div>
+            <div class="detail-item">
+                <label>Date</label>
+                <span id="order-date"></span>
+            </div>
+        </div>
+
+        <a href="index.html" class="btn-home">Return to Dashboard</a>
+    </div>
+    <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const order = params.get("order");
+    const date = params.get("date");
+
+    document.getElementById("order-id").innerText = "#" + order;
+    document.getElementById("order-date").innerText = date;
+    </script>
+</body>
+</html>
